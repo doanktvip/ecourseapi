@@ -3,6 +3,7 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from ckeditor.fields import RichTextField
 
+
 class User(AbstractUser):
     pass
 
@@ -26,8 +27,18 @@ class Category(BaseModel):
 class Course(BaseModel):
     subject = models.CharField(max_length=255)
     description = RichTextField()
-    image = CloudinaryField()#models.ImageField(upload_to='courses/%Y/%m')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = CloudinaryField()  # models.ImageField(upload_to='courses/%Y/%m')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='courses')
 
     def __str__(self):
         return self.subject
+
+
+class Lesson(BaseModel):
+    subject = models.CharField(max_length=255)
+    content = RichTextField()
+    image = CloudinaryField()
+    course = models.ForeignKey(Course, on_delete=models.PROTECT)
+
+    class Meta:
+        unique_together = ('subject', 'course')

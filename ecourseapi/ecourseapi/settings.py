@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 # Cấu hình CKEditor
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = "images/ckeditor"
 
 # (Tùy chọn) Cấu hình giao diện toolbar cho gọn (nếu không thích mặc định quá nhiều nút)
 CKEDITOR_CONFIGS = {
